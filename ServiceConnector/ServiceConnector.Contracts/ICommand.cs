@@ -1,10 +1,22 @@
+using System;
+
 namespace ServiceConnector.Contracts
 {
     public interface ICommand
     {
-        string Name { get; set; }
+        string Name { get;}
+        string ID { get; set; }
         DataEnums Type { get; set; }
-        OutputData Result { get; set; }
-        InputData InputData { get; set; }
+        CommandWorkingData WorkingData { get; set; }
+
+        void BeforeRun();
+        void Run();
+        void AfterRun();
+        void Execute();
+    }
+
+    public interface ILogger
+    {
+        void Write(string message, Exception ex);
     }
 }

@@ -9,7 +9,10 @@ namespace ServiceConnector.Contracts
     public interface IServiceEngine
     {
         bool SuppressExceptions { get; set; }
-        EngineInput Input { get; set; }
-        EngineOutput Execute();
+        EngineWorkingData WorkingData { get; set; }
+        List<LinketCommand<ICommand>> Commands { get; }
+        void AddCommand(ICommand cmd);
+        EngineWorkingData Execute();
+        ILogger Logger { get; set; }
     }
 }

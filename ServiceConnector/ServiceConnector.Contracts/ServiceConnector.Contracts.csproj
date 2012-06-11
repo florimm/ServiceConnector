@@ -41,11 +41,14 @@
   <ItemGroup>
     <Compile Include="BaseCommand.cs" />
     <Compile Include="BaseServiceEngine.cs" />
+    <Compile Include="CommandResult.cs" />
     <Compile Include="DataEnums.cs" />
     <Compile Include="EngineExcepiton.cs" />
     <Compile Include="EngineResult.cs" />
     <Compile Include="ICommand.cs" />
     <Compile Include="IServiceEngine.cs" />
+    <Compile Include="LinketCommand.cs" />
+    <Compile Include="NodeList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Data.cs" />
   </ItemGroup>

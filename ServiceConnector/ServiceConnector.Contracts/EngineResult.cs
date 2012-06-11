@@ -1,21 +1,8 @@
+using System.Collections.Generic;
+
 namespace ServiceConnector.Contracts
 {
-    public class EngineOutput : Data
+    public class EngineWorkingData : Data
     {
-        
-    }
-
-    public class EngineInput : Data
-    {
-        
-    }
-
-    public class InputData : Data
-    {
-        
-    }
-    public class OutputData : Data
-    {
-        
     }
 }

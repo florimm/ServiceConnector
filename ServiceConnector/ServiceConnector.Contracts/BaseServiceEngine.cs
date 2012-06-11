@@ -1,42 +1,79 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
 namespace ServiceConnector.Contracts
 {
     public abstract class BaseServiceEngine : IServiceEngine
     {
+        protected BaseServiceEngine()
+        {
+            Commands = new List<LinketCommand<ICommand>>();
+        }
         public bool SuppressExceptions { get; set; }
 
-        public EngineInput Input { get; set; }
+        public ILogger Logger { get; set; }
 
-        public EngineOutput Execute()
+        public EngineWorkingData WorkingData { get; set; }
+
+        public void AddCommand(ICommand cmd)
         {
-            return new EngineOutput();
+            SetID(cmd);
+            var cmd2 = new LinketCommand<ICommand> {Value = cmd};
+            Commands.Add(cmd2);
         }
-        //public static void DoTree<T>(Tree<T> tree, Action<T> action)
-        //{
-        //    if (tree == null) return;
-        //    var left = Task.Factory.StartNew(() => DoTree(tree.Left, action));
-        //    var right = Task.Factory.StartNew(() => DoTree(tree.Right, action));
-        //    action(tree.Data);
+        public void AddFirst(ICommand cmd)
+        {
+            //this.Commands.AddFirst(cmd);
+        }
+        public void AddAfterCommand(ICommand cmd)
+        {
+            //this.Commands.AddAfter(cmd);
+        }
+        public void AddBeforeCommand(ICommand cmd)
+        {
+            //this.Commands.AddBefore(cmd);
+        }
 
-        //    try
-        //    {
-        //        Task.WaitAll(left, right);
-        //    }
-        //    catch (AggregateException)
-        //    {
-        //        //handle exceptions here
-        //    }
-        //}
+        public EngineWorkingData Execute()
+        {
+            Parallel.ForEach(Commands, cmd =>
+                {
+                    DoTree(cmd, c => c.Execute());
+                    WorkingData.Output.Add(cmd.Value.Name, cmd.Value.WorkingData.Output);
+                });
+            return new EngineWorkingData();
+        }
 
-        //// By using Parallel.Invoke
-        //public static void DoTree2<T>(Tree<T> tree, Action<T> action)
-        //{
-        //    if (tree == null) return;
-        //    Parallel.Invoke(
-        //        () => DoTree2(tree.Left, action),
-        //        () => DoTree2(tree.Right, action),
-        //        () => action(tree.Data)
-        //    );
-        //}
+        private void DoTree(LinketCommand<ICommand> tree, Action<ICommand> action)
+        {
+            if (tree == null) return;
+            action(tree.Value);
+            WorkingData.Output.Add(tree.Value.Name, tree.Value.WorkingData.Output);
 
+            try
+            {
+                Task.WaitAll(tree.Childs.Select(task => Task.Factory.StartNew(() => DoTree(task, action))).ToArray());
+            }
+            catch (Exception ex)
+            {
+                Logger.Write("Engine", ex);
+            }
+        }
+
+        private void SetID(ICommand cmd)
+        {
+            string id = cmd.Name + Commands.Count;
+            int idGen = 0;
+            while (Commands.Any(c=> c.Value.ID  == id))
+            {
+                id = cmd.Name + idGen;
+                idGen++;
+            }
+            cmd.ID = id;
+        }
+
+        public List<LinketCommand<ICommand>> Commands { get; private set; }
     }
 }

@@ -1,5 +1,3 @@
-using System;
-
 namespace ServiceConnector.Contracts
 {
     public interface ICommand
@@ -13,10 +11,5 @@ namespace ServiceConnector.Contracts
         void Run();
         void AfterRun();
         void Execute();
-    }
-
-    public interface ILogger
-    {
-        void Write(string message, Exception ex);
     }
 }

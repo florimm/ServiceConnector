@@ -46,6 +46,7 @@
     <Compile Include="EngineExcepiton.cs" />
     <Compile Include="EngineResult.cs" />
     <Compile Include="ICommand.cs" />
+    <Compile Include="ILogger.cs" />
     <Compile Include="IServiceEngine.cs" />
     <Compile Include="LinketCommand.cs" />
     <Compile Include="NodeList.cs" />

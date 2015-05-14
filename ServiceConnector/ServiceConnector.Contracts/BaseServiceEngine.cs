@@ -10,6 +10,7 @@ namespace ServiceConnector.Contracts
         protected BaseServiceEngine()
         {
             Commands = new List<LinketCommand<ICommand>>();
+            WorkingData = new EngineWorkingData();
         }
         public bool SuppressExceptions { get; set; }
 
@@ -41,7 +42,7 @@ namespace ServiceConnector.Contracts
             Parallel.ForEach(Commands, cmd =>
                 {
                     DoTree(cmd, c => c.Execute());
-                    WorkingData.Output.Add(cmd.Value.Name, cmd.Value.WorkingData.Output);
+                    WorkingData.Output.Add(cmd.Value.ID, cmd.Value.WorkingData.Output);
                 });
             return new EngineWorkingData();
         }
@@ -50,7 +51,7 @@ namespace ServiceConnector.Contracts
         {
             if (tree == null) return;
             action(tree.Value);
-            WorkingData.Output.Add(tree.Value.Name, tree.Value.WorkingData.Output);
+            WorkingData.Output.Add(tree.Value.ID, tree.Value.WorkingData.Output);
 
             try
             {

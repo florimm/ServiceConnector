@@ -33,7 +33,7 @@ namespace Tests
         [Test]
         public void TestEngineWithCommands()
         {
-            BaseEngine engine = new BaseEngine();
+            var engine = new BaseEngine();
             engine.AddCommand(new CMD());
             engine.AddCommand(new CMD());
             engine.AddCommand(new CMD());
@@ -54,7 +54,7 @@ namespace Tests
 
         public override void Run()
         {
-            this.WorkingData = new CommandWorkingData();
+            //this.WorkingData = new CommandWorkingData();
             DataExecuted = true;
         }
 

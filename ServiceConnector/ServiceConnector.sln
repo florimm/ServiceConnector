@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceConnector.Contracts"
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "ServviceConnector.WebApi", "ServviceConnector.WebApi\ServviceConnector.WebApi.xproj", "{24C52526-7DDC-4D0D-B9CA-001C12D87097}"
 EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "ServiceConnector.Web", "ServiceConnector.Web\ServiceConnector.Web.xproj", "{5D09B400-33A3-4F1A-852E-93DEFC398E13}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{24C52526-7DDC-4D0D-B9CA-001C12D87097}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{24C52526-7DDC-4D0D-B9CA-001C12D87097}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{24C52526-7DDC-4D0D-B9CA-001C12D87097}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D09B400-33A3-4F1A-852E-93DEFC398E13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D09B400-33A3-4F1A-852E-93DEFC398E13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D09B400-33A3-4F1A-852E-93DEFC398E13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D09B400-33A3-4F1A-852E-93DEFC398E13}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

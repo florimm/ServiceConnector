@@ -3,13 +3,13 @@ import React, { Component, PropTypes } from 'react';
 export default class SquareComponent extends Component {
   render() {
     const { black } = this.props;
-    const fill = black ? 'black' : 'white';
-    const stroke = black ? 'white' : 'black';
+    const backgroundColor = black ? 'black' : 'white';
+    const color = black ? 'white' : 'black';
 
     return (
       <div style={{
-        backgroundColor: fill,
-        color: stroke,
+        color,
+        backgroundColor,
         width: '100%',
         height: '100%'
       }}>

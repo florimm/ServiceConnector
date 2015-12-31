@@ -4,7 +4,6 @@ import FilterList from './FilterList';
 
 export default class EditorComponent extends Component{
     render(){
-        const {group,name} = this.props;
         return (
                 <section className="content">
                   <div className="box">

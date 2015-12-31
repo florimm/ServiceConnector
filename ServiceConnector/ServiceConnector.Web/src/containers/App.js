@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import FieldsSelector from './../components/FieldsSelector';
 import FilterList from './FilterList';
+import ServiceComponent from './../components/ServiceComponent';
+import EditorComponent from './EditorComponent';
 import * as actionCreators from '../actionCreators';
 
 class App extends Component {
@@ -143,7 +144,7 @@ class App extends Component {
         <section className="sidebar">
           <div className="user-panel">
             <div className="pull-left image">
-              <img src="../../dist/img/user2-160x160.jpg" className="img-circle" alt="User Image"/>
+              <img src="https://placehold.it/160x160" className="img-circle" alt="User Image"/>
             </div>
             <div className="pull-left info">
               <p>Alexander Pierce</p>
@@ -165,8 +166,8 @@ class App extends Component {
                 <i className="fa fa-dashboard"></i> <span>Dashboard</span> <i className="fa fa-angle-left pull-right"></i>
               </a>
               <ul className="treeview-menu">
-                <li><a href="../../index.html"><i className="fa fa-circle-o"></i> Dashboard v1</a></li>
-                <li><a href="../../index2.html"><i className="fa fa-circle-o"></i> Dashboard v2</a></li>
+                <li><a href="../../index.html"><i className="fa fa-circle-o"></i><ServiceComponent group="Server" name="SQL"/></a></li>
+                <li><a href="../../index2.html"><i className="fa fa-circle-o"></i><ServiceComponent group="Server" name="MySQL"/></a></li>
               </ul>
             </li>
             <li className="treeview active">
@@ -295,46 +296,15 @@ class App extends Component {
           </ul>
         </section>
       </aside>
-      <div className="content-wrapper">
+      <div className="content-wrapper" style={{minHeight:'976px'}}>
         <section className="content-header">
-          <h1>
-            Sidebar Collapsed
-            <small>Layout with collapsed sidebar on load</small>
-          </h1>
           <ol className="breadcrumb">
             <li><a href="#"><i className="fa fa-dashboard"></i> Home</a></li>
             <li><a href="#">Layout</a></li>
             <li className="active">Collapsed Sidebar</li>
           </ol>
         </section>
-        <section className="content">
-          <div className="callout callout-info">
-            <h4>Tip!</h4>
-            
-        
-          </div>
-          <div className="box">
-            <div className="box-header with-border">
-              <h3 className="box-title">Title</h3>
-              <div className="box-tools pull-right">
-                <button className="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i className="fa fa-minus"></i></button>
-                <button className="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i className="fa fa-times"></i></button>
-              </div>
-            </div>
-            <div className="box-body">
-              <FieldsSelector
-                available={availableFields}
-                selected={selectedFields}
-                onSelect={actions.selectField}
-                onUnselect={actions.unselectField} />
-
-              <FilterList />
-            </div>
-            <div className="box-footer">
-              Footer
-            </div>
-          </div>
-        </section>
+        <EditorComponent/>
       </div>
 
       <footer className="main-footer">
@@ -446,7 +416,7 @@ class App extends Component {
               <div className="form-group">
                 <label className="control-sidebar-subheading">
                   Report panel usage
-                  <input type="checkbox" className="pull-right" checked/>
+                  <input type="checkbox" className="pull-right"/>
                 </label>
                 <p>
                   Some information about this general settings option
@@ -456,7 +426,7 @@ class App extends Component {
               <div className="form-group">
                 <label className="control-sidebar-subheading">
                   Allow mail redirect
-                  <input type="checkbox" className="pull-right" checked/>
+                  <input type="checkbox" className="pull-right"/>
                 </label>
                 <p>
                   Other sets of options are available
@@ -466,7 +436,7 @@ class App extends Component {
               <div className="form-group">
                 <label className="control-sidebar-subheading">
                   Expose author name in posts
-                  <input type="checkbox" className="pull-right" checked/>
+                  <input type="checkbox" className="pull-right"/>
                 </label>
                 <p>
                   Allow the user to show his name in blog posts
@@ -478,7 +448,7 @@ class App extends Component {
               <div className="form-group">
                 <label className="control-sidebar-subheading">
                   Show me as online
-                  <input type="checkbox" className="pull-right" checked/>
+                  <input type="checkbox" className="pull-right"/>
                 </label>
               </div>
 

@@ -17,18 +17,24 @@ namespace ServiceConnector.Contracts
             }
         }
 
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         public DataEnums Type { get; set; }
 
 
         public CommandWorkingData WorkingData { get; set; }
 
-        public abstract void BeforeRun();
+        public virtual void BeforeRun()
+        {
+            
+        }
 
         public abstract void Run();
 
-        public abstract void AfterRun();
+        public virtual void AfterRun()
+        {
+            
+        }
 
         public void Execute()
         {

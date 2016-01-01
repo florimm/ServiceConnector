@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="BaseCommand.cs" />
     <Compile Include="BaseServiceEngine.cs" />
+    <Compile Include="Bootstrap.cs" />
     <Compile Include="CommandResult.cs" />
     <Compile Include="DataEnums.cs" />
     <Compile Include="EngineExcepiton.cs" />
@@ -52,10 +53,41 @@
     <Compile Include="ILogger.cs" />
     <Compile Include="IServiceEngine.cs" />
     <Compile Include="LinketCommand.cs" />
+    <Compile Include="MediatorCommand\AsyncRequestHandler.cs" />
+    <Compile Include="MediatorCommand\CancellableAsyncRequestHandler.cs" />
+    <Compile Include="MediatorCommand\CommandPipeline.cs" />
+    <Compile Include="MediatorCommand\IAsyncNotification.cs" />
+    <Compile Include="MediatorCommand\IAsyncNotificationHandler.cs" />
+    <Compile Include="MediatorCommand\IAsyncRequest.cs" />
+    <Compile Include="MediatorCommand\IAsyncRequestHandler.cs" />
+    <Compile Include="MediatorCommand\ICancellableAsyncNotification.cs" />
+    <Compile Include="MediatorCommand\ICancellableAsyncNotificationHandler.cs" />
+    <Compile Include="MediatorCommand\ICancellableAsyncRequest.cs" />
+    <Compile Include="MediatorCommand\ICancellableAsyncRequestHandler.cs" />
+    <Compile Include="MediatorCommand\IMediator.cs" />
+    <Compile Include="MediatorCommand\INotification.cs" />
+    <Compile Include="MediatorCommand\INotificationHandler.cs" />
+    <Compile Include="MediatorCommand\Internal\AsyncNotificationHandlerWrapper.cs" />
+    <Compile Include="MediatorCommand\Internal\AsyncRequestHandlerWrapper.cs" />
+    <Compile Include="MediatorCommand\Internal\CancellableAsyncNotificationHandlerWrapper.cs" />
+    <Compile Include="MediatorCommand\Internal\CancellableAsyncRequestHandlerWrapper.cs" />
+    <Compile Include="MediatorCommand\Internal\NotificationHandlerWrapper.cs" />
+    <Compile Include="MediatorCommand\Internal\RequestHandlerWrapper.cs" />
+    <Compile Include="MediatorCommand\IRequest.cs" />
+    <Compile Include="MediatorCommand\IExecut.cs" />
+    <Compile Include="MediatorCommand\Mediator.cs" />
+    <Compile Include="MediatorCommand\MultiInstanceFactory.cs" />
+    <Compile Include="MediatorCommand\Execut.cs" />
+    <Compile Include="MediatorCommand\SingleInstanceFactory.cs" />
+    <Compile Include="MediatorCommand\Unit.cs" />
     <Compile Include="NodeList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Data.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="MediatorCommand\project.json" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

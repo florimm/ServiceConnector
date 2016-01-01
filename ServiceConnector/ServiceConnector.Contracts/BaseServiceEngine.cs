@@ -2,12 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MediatorCommand;
 
 namespace ServiceConnector.Contracts
 {
-    public abstract class BaseServiceEngine : IServiceEngine
+    public class BaseServiceEngine : IServiceEngine
     {
-        protected BaseServiceEngine()
+        public BaseServiceEngine()
         {
             Commands = new List<LinketCommand<ICommand>>();
             WorkingData = new EngineWorkingData();
@@ -20,7 +21,7 @@ namespace ServiceConnector.Contracts
 
         public void AddCommand(ICommand cmd)
         {
-            SetID(cmd);
+            SetId(cmd);
             var cmd2 = new LinketCommand<ICommand> {Value = cmd};
             Commands.Add(cmd2);
         }
@@ -42,7 +43,7 @@ namespace ServiceConnector.Contracts
             Parallel.ForEach(Commands, cmd =>
                 {
                     DoTree(cmd, c => c.Execute());
-                    WorkingData.Output.Add(cmd.Value.ID, cmd.Value.WorkingData.Output);
+                    WorkingData.Output.Add(cmd.Value.Id, cmd.Value.WorkingData.Output);
                 });
             return new EngineWorkingData();
         }
@@ -51,11 +52,11 @@ namespace ServiceConnector.Contracts
         {
             if (tree == null) return;
             action(tree.Value);
-            WorkingData.Output.Add(tree.Value.ID, tree.Value.WorkingData.Output);
+            WorkingData.Output.Add(tree.Value.Id, tree.Value.WorkingData.Output);
 
             try
             {
-                Task.WaitAll(tree.Childs.Select(task => Task.Factory.StartNew(() => DoTree(task, action))).ToArray());
+                Task.WaitAll(tree.Childrens.Select(task => Task.Factory.StartNew(() => DoTree(task, action))).ToArray());
             }
             catch (Exception ex)
             {
@@ -63,16 +64,16 @@ namespace ServiceConnector.Contracts
             }
         }
 
-        private void SetID(ICommand cmd)
+        private void SetId(ICommand cmd)
         {
             string id = cmd.Name + Commands.Count;
             int idGen = 0;
-            while (Commands.Any(c=> c.Value.ID  == id))
+            while (Commands.Any(c=> c.Value.Id  == id))
             {
                 id = cmd.Name + idGen;
                 idGen++;
             }
-            cmd.ID = id;
+            cmd.Id = id;
         }
 
         public List<LinketCommand<ICommand>> Commands { get; private set; }

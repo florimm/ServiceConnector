@@ -1,27 +1,42 @@
-import React, {Component} from 'react';
-import FieldsSelector from './../components/FieldsSelector';
-import FilterList from './FilterList';
+import React, {Component, PropTypes} from 'react';
+import EditorSquare from './EditorSquare';
+import ServiceComponent from './../components/ServiceComponent';
+import { DragDropContext } from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
 
-export default class EditorComponent extends Component{
+
+class EditorComponent extends Component{
+  renderSquare(i) {
+    const x = i % 8;
+    const y = Math.floor(i / 8);
+
+    return (
+      <div key={i}
+           style={{ width: '12.5%', height: '12.5%' }}>
+
+      </div>
+    );
+  }
+
+  renderPiece(x, y) {
+    const [knightX, knightY] = this.props.knightPosition;
+    if (x === knightX && y === knightY) {
+      return <ServiceComponent group="123" name="2333" />;
+    }
+  }
     render(){
+        const squares = [];
+          squares.push(this.renderSquare(1));
         return (
                 <section className="content">
                   <div className="box">
-                    <div className="box-header with-border">
-                      <h3 className="box-title">Editor</h3>
-                      <div className="box-tools pull-right">
-                        <button className="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i className="fa fa-minus"></i></button>
-                        <button className="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i className="fa fa-times"></i></button>
-                      </div>
-                    </div>
                     <div className="box-body">
-                      <FilterList />
-                    </div>
-                    <div className="box-footer">
-                      Footer
+                      {squares}
                     </div>
                   </div>
                 </section>
             );
     }
-} 
+}
+
+export default DragDropContext(HTML5Backend)(EditorComponent);

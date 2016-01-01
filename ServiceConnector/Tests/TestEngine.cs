@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Machine.Specifications;
+﻿using System.Collections.Generic;
+using MediatorCommand;
 using NUnit.Framework;
 using ServiceConnector.Contracts;
 
@@ -14,41 +11,27 @@ namespace Tests
         [Test]
         public void TestEngine2()
         {
-            BaseEngine engine = new BaseEngine();
+            var engine = new BaseServiceEngine();
 
             Assert.IsNotNull(engine.Execute());
         }
         [Test]
         public void TestEngineWithCommands()
         {
-            var engine = new BaseEngine();
-            engine.AddCommand(new CMD());
-            engine.AddCommand(new CMD());
-            engine.AddCommand(new CMD());
+            var engine = new BaseServiceEngine();
+            engine.AddCommand(new CmdCommand());
+            engine.AddCommand(new CmdCommand());
+            engine.AddCommand(new CmdCommand());
             Assert.IsNotNull(engine.Execute());
         }
     }
-    public class BaseEngine : BaseServiceEngine
-    {
-        
-    }
-    public class CMD : BaseCommand
+    public class CmdCommand : BaseCommand
     {
         public bool DataExecuted { get; set; }
-        public override void BeforeRun()
-        {
-            
-        }
 
         public override void Run()
         {
-            //this.WorkingData = new CommandWorkingData();
             DataExecuted = true;
-        }
-
-        public override void AfterRun()
-        {
-            
         }
     }
 }

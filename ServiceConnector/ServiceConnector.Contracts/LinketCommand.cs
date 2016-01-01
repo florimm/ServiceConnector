@@ -9,15 +9,15 @@ namespace ServiceConnector.Contracts
         public int Depth { get; set; }
         public int Nr { get; set; }
 
-        public List<LinketCommand<T>> Childs { get; set; }
+        public List<LinketCommand<T>> Childrens { get; set; }
 
         public void AddChild(LinketCommand<T> data)
         {
-            this.Childs.Add(data);
+            this.Childrens.Add(data);
         }
         public void DeleteChild(LinketCommand<T> data)
         {
-            this.Childs.Remove(this.Childs.Single(c => c.Depth == data.Depth && data.Nr == c.Nr));
+            this.Childrens.Remove(this.Childrens.Single(c => c.Depth == data.Depth && data.Nr == c.Nr));
         }
     }
 }

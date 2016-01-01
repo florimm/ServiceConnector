@@ -4,6 +4,7 @@ import * as fields from './fields';
 import * as operators from './operators';
 
 let nextId = 0;
+let componentId = 0;
 
 const emptyFilters = OrderedMap();
 
@@ -73,6 +74,16 @@ function changeFilterOperator(state, filterId, operator) {
 function changeFilterValue(state, filterId, value) {
   return state.setIn(['filters', filterId, 'value'], value);
 }
+function addComponent(state, component){
+   return state.update('components', (components) => {
+    return component.set(++componentId, component);
+  });
+}
+function removeComponent(state, component){
+   return state.update('components', (components) => {
+    return component.set(++componentId, component);
+  });
+}
 
 export default function (state = initialState, action) {
   switch (action.type) {
@@ -99,6 +110,10 @@ export default function (state = initialState, action) {
 
     case types.CHANGE_FILTER_VALUE:
       return changeFilterValue(state, action.filterId, action.value);
+    case types.ADD_COMPONENT:
+      return addComponent(state,action.component);
+     case types.REMOVE_COMPONENT:
+      return removeComponent(state,action.component);
 
     default:
       return state;

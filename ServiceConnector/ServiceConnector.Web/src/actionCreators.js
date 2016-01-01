@@ -31,3 +31,10 @@ export function changeFilterOperator(filterId, operator) {
 export function changeFilterValue(filterId, value) {
   return {type: types.CHANGE_FILTER_VALUE, filterId, value};
 }
+
+export function addComponent(component) {
+  return {type: types.ADD_COMPONENT, component};
+}
+export function removeComponent(component) {
+  return {type: types.REMOVE_COMPONENT, component};
+}

@@ -8,9 +8,9 @@ namespace MediatorCommand.Internal
     internal class RequestHandlerWrapper<TCommand, TResult> : RequestHandlerWrapper<TResult>
         where TCommand : IRequest<TResult>
     {
-        private readonly IExecut<TCommand, TResult> _inner;
+        private readonly IExecute<TCommand, TResult> _inner;
 
-        public RequestHandlerWrapper(IExecut<TCommand, TResult> inner)
+        public RequestHandlerWrapper(IExecute<TCommand, TResult> inner)
         {
             _inner = inner;
         }

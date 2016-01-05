@@ -4,7 +4,7 @@
     /// Helper class for requests that return a void response
     /// </summary>
     /// <typeparam name="TMessage">The type of void request being handled</typeparam>
-    public abstract class Execut<TMessage> : IExecut<TMessage, Unit>
+    public abstract class Execute<TMessage> : IExecute<TMessage, Unit>
         where TMessage : IRequest
     {
         public Unit Handle(TMessage message)

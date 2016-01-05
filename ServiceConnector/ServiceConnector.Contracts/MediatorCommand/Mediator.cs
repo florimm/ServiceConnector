@@ -86,7 +86,7 @@ namespace MediatorCommand
         private RequestHandlerWrapper<TResponse> GetHandler<TResponse>(IRequest<TResponse> request)
         {
             return GetHandler<RequestHandlerWrapper<TResponse>, TResponse>(request,
-                typeof(IExecut<,>),
+                typeof(IExecute<,>),
                 typeof(RequestHandlerWrapper<,>));
         }
 

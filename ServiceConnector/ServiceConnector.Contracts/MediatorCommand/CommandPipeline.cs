@@ -1,16 +1,18 @@
+using System;
+
 namespace MediatorCommand
 {
     public class CommandPipeline<TInput, TOutput>
-        : IExecut<TInput, TOutput>
+        : IExecute<TInput, TOutput>
         where TInput : IRequest<TOutput>
     {
 
         private readonly IPreExecute<TInput>[] preExecutes;
-        private readonly IExecut<TInput, TOutput> requestHander;
+        private readonly IExecute<TInput, TOutput> requestHander;
         private readonly IPostExecute<TInput, TOutput>[] postExecutes;
 
         public CommandPipeline(
-            IExecut<TInput, TOutput> requestHander,
+            IExecute<TInput, TOutput> requestHander,
             IPreExecute<TInput>[] preExecutes,
             IPostExecute<TInput, TOutput>[] postExecutes
             )
@@ -34,7 +36,6 @@ namespace MediatorCommand
             {
                 postRequestHandler.Handle(message, result);
             }
-
             return result;
         }
     }

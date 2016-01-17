@@ -28,7 +28,7 @@ namespace MediatorCommand
             _multiInstanceFactory = multiInstanceFactory;
         }
 
-        public TResponse Send<TResponse>(IRequest<TResponse> request)
+        public TResponse Send<TResponse>(ICommand<TResponse> request)
         {
             var defaultHandler = GetHandler(request);
 
@@ -83,7 +83,7 @@ namespace MediatorCommand
             await Task.WhenAll(notificationHandlers);
         }
 
-        private RequestHandlerWrapper<TResponse> GetHandler<TResponse>(IRequest<TResponse> request)
+        private RequestHandlerWrapper<TResponse> GetHandler<TResponse>(ICommand<TResponse> request)
         {
             return GetHandler<RequestHandlerWrapper<TResponse>, TResponse>(request,
                 typeof(IExecute<,>),

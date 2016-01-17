@@ -1,8 +1,9 @@
 using System;
+using MediatorCommand;
 
 namespace ServiceConnector.Contracts
 {
-    public abstract class BaseCommand : ICommand
+    public abstract class BaseCommand : ICommand<CommandWorkingData>
     {
         protected BaseCommand()
         {
@@ -46,7 +47,7 @@ namespace ServiceConnector.Contracts
             }
             catch (Exception ex)
             {
-                new EngineExcepiton(ex.Message);
+                new EngineException(ex.Message);
             }
         }
     }

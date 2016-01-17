@@ -47,9 +47,8 @@
     <Compile Include="Bootstrap.cs" />
     <Compile Include="CommandResult.cs" />
     <Compile Include="DataEnums.cs" />
-    <Compile Include="EngineExcepiton.cs" />
+    <Compile Include="EngineException.cs" />
     <Compile Include="EngineResult.cs" />
-    <Compile Include="ICommand.cs" />
     <Compile Include="ILogger.cs" />
     <Compile Include="IServiceEngine.cs" />
     <Compile Include="LinketCommand.cs" />
@@ -64,6 +63,7 @@
     <Compile Include="MediatorCommand\ICancellableAsyncNotificationHandler.cs" />
     <Compile Include="MediatorCommand\ICancellableAsyncRequest.cs" />
     <Compile Include="MediatorCommand\ICancellableAsyncRequestHandler.cs" />
+    <Compile Include="MediatorCommand\ICommand.cs" />
     <Compile Include="MediatorCommand\IMediator.cs" />
     <Compile Include="MediatorCommand\INotification.cs" />
     <Compile Include="MediatorCommand\INotificationHandler.cs" />
@@ -73,7 +73,6 @@
     <Compile Include="MediatorCommand\Internal\CancellableAsyncRequestHandlerWrapper.cs" />
     <Compile Include="MediatorCommand\Internal\NotificationHandlerWrapper.cs" />
     <Compile Include="MediatorCommand\Internal\RequestHandlerWrapper.cs" />
-    <Compile Include="MediatorCommand\IRequest.cs" />
     <Compile Include="MediatorCommand\IExecut.cs" />
     <Compile Include="MediatorCommand\Mediator.cs" />
     <Compile Include="MediatorCommand\MultiInstanceFactory.cs" />

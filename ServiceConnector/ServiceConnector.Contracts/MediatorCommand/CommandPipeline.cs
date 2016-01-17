@@ -4,7 +4,7 @@ namespace MediatorCommand
 {
     public class CommandPipeline<TInput, TOutput>
         : IExecute<TInput, TOutput>
-        where TInput : IRequest<TOutput>
+        where TInput : ICommand<TOutput>
     {
 
         private readonly IPreExecute<TInput>[] preExecutes;

@@ -2,11 +2,11 @@ namespace MediatorCommand.Internal
 {
     internal abstract class RequestHandlerWrapper<TResult>
     {
-        public abstract TResult Handle(IRequest<TResult> message);
+        public abstract TResult Handle(ICommand<TResult> message);
     }
 
     internal class RequestHandlerWrapper<TCommand, TResult> : RequestHandlerWrapper<TResult>
-        where TCommand : IRequest<TResult>
+        where TCommand : ICommand<TResult>
     {
         private readonly IExecute<TCommand, TResult> _inner;
 
@@ -15,7 +15,7 @@ namespace MediatorCommand.Internal
             _inner = inner;
         }
 
-        public override TResult Handle(IRequest<TResult> message)
+        public override TResult Handle(ICommand<TResult> message)
         {
             return _inner.Handle((TCommand)message);
         }

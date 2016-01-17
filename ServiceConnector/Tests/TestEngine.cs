@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
 using MediatorCommand;
 using NUnit.Framework;
-using ServiceConnector.Contracts;
 using StructureMap;
 
 namespace Tests
@@ -34,17 +31,24 @@ namespace Tests
             });
         }
         [Test]
-        public void TestEngine2()
+        public void TestEngineSend()
         {
             var mediator = container.GetInstance<IMediator>();
-            mediator.Send(new Ping());
+            mediator.Send(new Ping() {Message = "Florim"});
         }
 
-        public class Ping : IRequest<Pong>
+        [Test]
+        public void TestEngineNotify()
+        {
+            var mediator = container.GetInstance<IMediator>();
+            mediator.Publish(new Pinged());
+        }
+
+        public class Ping : ICommand<Pong>
         {
             public string Message { get; set; }
         }
-        public class Pong : IRequest<Pong>
+        public class Pong : ICommand<Pong>
         {
             public string Message { get; set; }
         }
@@ -80,7 +84,7 @@ namespace Tests
         {
             public void Handle(Pinged notification)
             {
-                throw new NotImplementedException();
+                
             }
         }
     }

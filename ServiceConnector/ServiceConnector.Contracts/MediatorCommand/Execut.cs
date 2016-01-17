@@ -5,7 +5,7 @@
     /// </summary>
     /// <typeparam name="TMessage">The type of void request being handled</typeparam>
     public abstract class Execute<TMessage> : IExecute<TMessage, Unit>
-        where TMessage : IRequest
+        where TMessage : ICommand<Unit>
     {
         public Unit Handle(TMessage message)
         {

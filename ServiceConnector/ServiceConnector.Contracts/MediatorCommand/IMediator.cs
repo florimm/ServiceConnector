@@ -14,7 +14,7 @@ namespace MediatorCommand
         /// <typeparam name="TResponse">Response type</typeparam>
         /// <param name="request">Request object</param>
         /// <returns>Response</returns>
-        TResponse Send<TResponse>(IRequest<TResponse> request);
+        TResponse Send<TResponse>(ICommand<TResponse> request);
 
         /// <summary>
         /// Asynchronously send a request to a single handler 

@@ -20,12 +20,12 @@ namespace ServiceConnector.Contracts
     }
     public class Node<T>
     {
-        public Node()
-        {
-            Neighbors = null;
-        }
+        //public Node()
+        //{
+        //    Neighbors = null;
+        //}
 
-        public Node(T data) : this(data, null) { }
+        public Node(T data) : this(data, new NodeList<T>()) { }
         public Node(T data, NodeList<T> neighbors)
         {
             this.Value = data;
@@ -34,6 +34,6 @@ namespace ServiceConnector.Contracts
 
         public T Value { get; set; }
 
-        protected NodeList<T> Neighbors { get; set; }
+        public NodeList<T> Neighbors { get; set; }
     }
 }

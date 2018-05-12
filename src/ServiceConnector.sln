@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2000
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "ServiceConnector", "ServiceConnector\ServiceConnector.fsproj", "{295BACF8-DA64-48E4-A6C1-0F779EBEB482}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "ServiceConnector.Web", "ServiceConnector.Web\ServiceConnector.Web.fsproj", "{2E7ECF37-EE5C-47D0-84D2-67D3BD1BFAB1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{295BACF8-DA64-48E4-A6C1-0F779EBEB482}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{295BACF8-DA64-48E4-A6C1-0F779EBEB482}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{295BACF8-DA64-48E4-A6C1-0F779EBEB482}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{295BACF8-DA64-48E4-A6C1-0F779EBEB482}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E7ECF37-EE5C-47D0-84D2-67D3BD1BFAB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E7ECF37-EE5C-47D0-84D2-67D3BD1BFAB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E7ECF37-EE5C-47D0-84D2-67D3BD1BFAB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E7ECF37-EE5C-47D0-84D2-67D3BD1BFAB1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C5A54D81-DD24-482A-8DA1-92EB8FBFAE71}
+	EndGlobalSection
+EndGlobal

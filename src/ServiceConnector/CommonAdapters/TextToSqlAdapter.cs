@@ -4,12 +4,22 @@ namespace ServiceConnector.CommonAdapters
 {
     public class TextToSqlAdapter : IInputParameterAdapter
     {
-        private readonly Dictionary<string, object> input;
+        public Dictionary<string, object> input { get; set; }
 
-        public TextToSqlAdapter(Dictionary<string, object> input)
+        public string Name => "TextToSqlAdapter";
+
+        public Dictionary<string, object> Convert()
         {
-            this.input = input;
+            return input;
         }
+    }
+
+
+    public class DefaultAdapter : IInputParameterAdapter
+    {
+        public Dictionary<string, object> input { get; set; }
+
+        public string Name => "DefaultAdapter";
 
         public Dictionary<string, object> Convert()
         {

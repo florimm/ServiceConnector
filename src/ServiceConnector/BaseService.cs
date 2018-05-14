@@ -20,6 +20,7 @@ namespace ServiceConnector
 
     public interface IInputParameterAdapter
     {
+        string Name { get; set; }
         Dictionary<string, object> Convert();
     }
 }
